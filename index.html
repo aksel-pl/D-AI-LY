@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="D[AI]LY is a daily game for distinguishing human-made content from AI-made content."
+    />
+    <title>D[AI]LY</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <span></span>
+        <a class="brand" href="/" aria-label="D[AI]LY home">
+          <span>D</span><span class="brand-mark">AI</span><span>LY</span>
+        </a>
+        <button class="icon-button" id="helpButton" type="button" aria-label="Open details" title="Details">?</button>
+      </header>
+
+      <main>
+        <section class="hub" id="hub">
+          <div class="hub-copy">
+            <p class="eyebrow">Daily games</p>
+            <h1>Pick a signal test.</h1>
+            <p>Each game opens its own six-round board. Find the sourced work, then compare your guess with the player spread.</p>
+          </div>
+          <div class="game-grid" id="gameGrid" aria-label="Available games"></div>
+        </section>
+
+        <section class="game-window" id="gameWindow" hidden>
+          <div class="game-header">
+            <button class="secondary-button" id="closeGameButton" type="button">Home</button>
+            <div>
+              <p class="eyebrow" id="roundCount">Round 1 of 6</p>
+              <h1 id="gameTitle">Poetry</h1>
+              <p id="gameIntro"></p>
+            </div>
+            <p class="source-note" id="gameMeta"></p>
+          </div>
+
+          <div class="choice-grid" id="choiceGrid"></div>
+
+          <section class="reveal-panel" id="revealPanel" hidden>
+            <div>
+              <p class="result-label" id="revealTitle">Correct</p>
+              <p id="revealCopy"></p>
+            </div>
+            <div class="spread-bars" id="spreadBars"></div>
+            <button class="primary-button" id="nextButton" type="button">Next</button>
+          </section>
+
+          <section class="finish-panel" id="finishPanel" hidden>
+            <p class="eyebrow">Game complete</p>
+            <h2 id="finishTitle">Sharp eye.</h2>
+            <p id="finishCopy"></p>
+            <div class="summary-grid" id="finishSummary"></div>
+            <p class="average-line" id="averageLine"></p>
+            <pre class="share-card" id="shareCard"></pre>
+            <div class="finish-actions">
+              <button class="primary-button" id="shareButton" type="button">Share Result</button>
+              <button class="secondary-button" id="replayButton" type="button">Replay</button>
+              <button class="secondary-button" id="homeButton" type="button">Home</button>
+            </div>
+            <div class="archive-panel" id="archivePanel"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="modal calendar-modal" id="calendarDialog">
+      <button class="modal-close" id="closeCalendarButton" type="button" aria-label="Close">×</button>
+      <p class="eyebrow" id="calendarLabel">Select a date</p>
+      <div class="calendar-nav">
+        <button class="secondary-button calendar-nav-btn" id="calendarPrev" type="button" aria-label="Previous month">‹</button>
+        <strong id="calendarMonthLabel"></strong>
+        <button class="secondary-button calendar-nav-btn" id="calendarNext" type="button" aria-label="Next month">›</button>
+      </div>
+      <div class="calendar-grid" id="calendarGrid" role="grid" aria-label="Calendar"></div>
+    </dialog>
+
+    <dialog class="modal" id="helpDialog">
+      <button class="modal-close" id="closeHelpButton" type="button" aria-label="Close">×</button>
+      <p class="eyebrow">About D[AI]LY</p>
+      <h2>Human sources, synthetic decoys.</h2>
+      <p>
+        Poetry and photography rounds use source-linked human works. The news game can hydrate from RSS feeds through the local server. Guess spreads are stored by the server running this app.
+      </p>
+      <p>
+        Music is parked for now, as requested.
+      </p>
+    </dialog>
+
+    <dialog class="artwork-dialog" id="artworkDialog">
+      <div class="artwork-toolbar">
+        <button class="secondary-button" id="closeArtworkButton" type="button">Close</button>
+        <button class="secondary-button" id="zoomOutButton" type="button" aria-label="Zoom out">−</button>
+        <button class="secondary-button" id="zoomInButton" type="button" aria-label="Zoom in">+</button>
+      </div>
+      <div class="artwork-stage" id="artworkStage">
+        <img id="artworkImage" alt="" />
+      </div>
+    </dialog>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
