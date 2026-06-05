@@ -1,2 +1,4 @@
 data/guess-spreads.json
 data/completion-stats.json
+.DS_Store
+node_modules/

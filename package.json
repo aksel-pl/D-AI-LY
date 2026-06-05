@@ -2,6 +2,7 @@
   "name": "dai-ly",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "description": "A daily puzzle game for spotting human-made content among AI-made decoys.",
   "scripts": {
     "start": "node server.mjs"

@@ -56,13 +56,13 @@ a {
 }
 
 body[data-route="poetry"] .topbar,
-body[data-route="photograph"] .topbar,
+body[data-route="visual-art"] .topbar,
 body[data-route="news"] .topbar {
   display: none;
 }
 
 body[data-route="poetry"] #hub,
-body[data-route="photograph"] #hub,
+body[data-route="visual-art"] #hub,
 body[data-route="news"] #hub {
   display: none !important;
 }
@@ -212,6 +212,24 @@ h2 {
   transform: translateY(-2px);
 }
 
+.game-card[data-status="coming-soon"] {
+  cursor: default;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      rgba(24, 24, 22, 0.035),
+      rgba(24, 24, 22, 0.035) 8px,
+      transparent 8px,
+      transparent 16px
+    ),
+    var(--white);
+}
+
+.game-card[data-status="coming-soon"]:hover {
+  box-shadow: none;
+  transform: none;
+}
+
 .game-card span {
   justify-self: start;
   border: 2px solid var(--line);
@@ -237,6 +255,56 @@ h2 {
   line-height: 1.4;
 }
 
+.traveller-checklist {
+  display: grid;
+  gap: 18px;
+  border-top: 3px solid var(--line);
+  padding-top: 28px;
+}
+
+.checklist-heading {
+  display: grid;
+  gap: 8px;
+  max-width: 720px;
+}
+
+.checklist-heading h2 {
+  margin: 0;
+}
+
+.checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.checklist-grid label {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  min-height: 96px;
+  border: 2px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  background: var(--white);
+  cursor: pointer;
+}
+
+.checklist-grid input {
+  width: 22px;
+  height: 22px;
+  margin: 2px 0 0;
+  accent-color: var(--mint);
+}
+
+.checklist-grid span {
+  color: var(--ink);
+  font-size: 0.96rem;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
 .game-window {
   padding-top: 26px;
 }
@@ -251,13 +319,13 @@ h2 {
 }
 
 .game-window[data-game="poetry"],
-.game-window[data-game="photograph"],
+.game-window[data-game="visual-art"],
 .game-window[data-game="news"] {
   padding-top: 20px;
 }
 
 .game-window[data-game="poetry"] .game-header,
-.game-window[data-game="photograph"] .game-header,
+.game-window[data-game="visual-art"] .game-header,
 .game-window[data-game="news"] .game-header {
   display: block;
   border-bottom: 0;
@@ -268,9 +336,9 @@ h2 {
 .game-window[data-game="poetry"] .game-header .eyebrow,
 .game-window[data-game="poetry"] #gameIntro,
 .game-window[data-game="poetry"] #gameMeta,
-.game-window[data-game="photograph"] .game-header .eyebrow,
-.game-window[data-game="photograph"] #gameIntro,
-.game-window[data-game="photograph"] #gameMeta,
+.game-window[data-game="visual-art"] .game-header .eyebrow,
+.game-window[data-game="visual-art"] #gameIntro,
+.game-window[data-game="visual-art"] #gameMeta,
 .game-window[data-game="news"] .game-header .eyebrow,
 .game-window[data-game="news"] #gameIntro,
 .game-window[data-game="news"] #gameMeta {
@@ -278,7 +346,7 @@ h2 {
 }
 
 .game-window[data-game="poetry"] .game-header .secondary-button,
-.game-window[data-game="photograph"] .game-header .secondary-button,
+.game-window[data-game="visual-art"] .game-header .secondary-button,
 .game-window[data-game="news"] .game-header .secondary-button {
   position: fixed;
   top: 16px;
@@ -291,7 +359,7 @@ h2 {
 }
 
 .game-window[data-game="poetry"] #gameTitle,
-.game-window[data-game="photograph"] #gameTitle,
+.game-window[data-game="visual-art"] #gameTitle,
 .game-window[data-game="news"] #gameTitle {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -456,7 +524,6 @@ blockquote span {
   border: 2px solid var(--line);
   background: #ddd;
   object-fit: contain;
-  filter: grayscale(1);
 }
 
 .photo-choice img[data-zoomable] {
@@ -854,7 +921,8 @@ blockquote span {
 
 @media (max-width: 900px) {
   .game-grid,
-  .choice-grid {
+  .choice-grid,
+  .checklist-grid {
     grid-template-columns: 1fr;
   }
 
