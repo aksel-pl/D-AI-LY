@@ -3,6 +3,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { extname, join, normalize } from "node:path";
 
+const host = process.env.HOST || "0.0.0.0";
 const port = Number(process.env.PORT || 4173);
 const root = process.cwd();
 const dataDir = join(root, "data");
@@ -51,8 +52,8 @@ createServer(async (request, response) => {
     response.writeHead(500, { "Content-Type": "application/json" });
     response.end(JSON.stringify({ error: error.message }));
   }
-}).listen(port, () => {
-  console.log(`D[AI]LY running at http://127.0.0.1:${port}`);
+}).listen(port, host, () => {
+  console.log(`D[AI]LY running at http://${host}:${port}`);
 });
 
 async function handleGuess(request, response) {
